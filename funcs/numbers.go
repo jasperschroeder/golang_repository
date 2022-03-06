@@ -1,4 +1,4 @@
-package main
+package funcs
 
 import "fmt"
 
@@ -42,21 +42,6 @@ func quotient(a float64, b float64) float64 {
 	return a / b
 }
 
-func loop_number(k int, l int) {
-	// 1 Sum
-	// 2 Product
-	// 3 Difference
-
-	for i, j := 0, 0; i < k && j < l; i, j = i+1, j+1 {
-		fmt.Println(i, j)
-		sum := sum(i, j)
-		prod := product(i, j)
-		diff := diff(prod, sum)
-		fmt.Println(diff)
-		fmt.Println("")
-	}
-}
-
 func loop_numbers(k int, l int) {
 	//	The function does the following
 	//		Initiate i at 0, if below k, increment by 1
@@ -78,7 +63,7 @@ func loop_numbers(k int, l int) {
 	}
 }
 
-func main() {
+func All_funcs() {
 	//Calls the preceding functions with different numbers
 	print_fibonacci(1)
 	print_fibonacci(2)
@@ -91,5 +76,10 @@ func main() {
 	fmt.Println(product(12, 4))
 	fmt.Println(quotient(12, 4))
 
-	loop_numbers(25, 25)
+	loop_numbers(10, 10)
 }
+
+/*
+	IMPORTANT: First letter of functions and integers to be exported
+	needs to be capitalized!
+*/

@@ -1,9 +1,11 @@
 // Arrays and slices
-package main
+package funcs
 
 import "fmt"
 
-func main() {
+var INTEGER = 3
+
+func Arraysnslices() {
 	fmt.Println("Hello World!")
 	fmt.Print("\n")
 
@@ -23,7 +25,6 @@ func main() {
 	// array_one = append(array_one, 4, 5)
 	// Would throw an error.
 
-	fmt.Println("\n")
 	fmt.Println("Variable Length")
 
 	// Variable length
