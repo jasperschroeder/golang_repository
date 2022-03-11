@@ -22,9 +22,9 @@ func Displaywelcome() {
 }
 
 func Displayboard(board [9]string) {
-	fmt.Println(board[0], "|", board[1], "|", board[2])
-	fmt.Println(board[3], "|", board[4], "|", board[5])
-	fmt.Println(board[6], "|", board[7], "|", board[8])
+	for i := 0; i < 3; i++ {
+		fmt.Println(board[0+(i*3)], "|", board[1+(i*3)], "|", board[2+(i*3)])
+	}
 }
 
 var gameOver bool = false
@@ -37,40 +37,39 @@ func renewBoard(board [9]string) [9]string {
 	return board
 }
 
-func Checkwin(board [9]string) {
+func CheckHorizontal(board [9]string) {
+	for i := 0; i < 3; i++ {
+		if (board[0+(i*3)] == board[1+(i*3)] && board[1+(i*3)] == board[2+(i*3)]) && (board[0+(i*3)] != "-") {
+			fmt.Println(board[0+(i*3)], "won!")
+			gameOver = true
+		}
+	}
+}
 
-	if (board[0] == board[1] && board[1] == board[2]) && (board[0] != "-") {
+func CheckVertical(board [9]string) {
+	for i := 0; i < 3; i++ {
+		if (board[0+i] == board[3+i] && board[3+i] == board[6+i]) && (board[0+i] != "-") {
+			fmt.Println(board[0+i], "won!")
+			gameOver = true
+		}
+	}
+}
+
+func CheckDiagonal(board [9]string) {
+	if (board[0] == board[4] && board[4] == board[8]) && board[0] != "-" {
 		fmt.Println(board[0], "won!")
 		gameOver = true
-
-	} else if (board[3] == board[4] && board[4] == board[5]) && (board[3] != "-") {
-		fmt.Println(board[3], "won!")
-		gameOver = true
-
-	} else if (board[6] == board[7] && board[7] == board[8]) && board[6] != "-" {
-		fmt.Println(board[6], "won!")
-		gameOver = true
-
-	} else if (board[0] == board[3] && board[3] == board[6]) && board[0] != "-" {
-		fmt.Println(board[0], "won!")
-		gameOver = true
-
-	} else if (board[1] == board[4] && board[4] == board[7]) && board[1] != "-" {
-		fmt.Println(board[1], "won!")
-		gameOver = true
-
-	} else if (board[2] == board[5] && board[5] == board[8]) && board[2] != "-" {
-		fmt.Println(board[2], "won!")
-		gameOver = true
-
-	} else if (board[0] == board[4] && board[4] == board[8]) && board[0] != "-" {
-		fmt.Println(board[0], "won!")
-		gameOver = true
-
 	} else if (board[2] == board[4] && board[4] == board[6]) && board[2] != "-" {
 		fmt.Println(board[2], "won!")
 		gameOver = true
 	}
+}
+
+func Checkwin(board [9]string) {
+	CheckHorizontal(board)
+	CheckVertical(board)
+	CheckDiagonal(board)
+
 }
 
 func play() {
@@ -130,7 +129,7 @@ func main() {
 		var yes string
 		fmt.Scan(&yes)
 
-		if yes == "Y" {
+		if yes == "Y" || yes == "y" {
 			play()
 		} else {
 			fmt.Println("Bye bye!")
