@@ -4,6 +4,8 @@ package funcs
 import "fmt"
 
 var INTEGER = 3
+var Name = "Jasper" 
+var City = "Disneyland"
 
 func Arraysnslices() {
 	fmt.Println("Hello World!")
